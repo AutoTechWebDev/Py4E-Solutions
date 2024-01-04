@@ -1,0 +1,23 @@
+lar = None
+sma = None
+
+while True:
+    num = input('Enter Number:')
+    if num == 'done':
+         break
+    try:
+        num = int(num)
+    except:
+        print ('Invalid input')
+        continue
+    if lar is None:
+        lar = num
+    elif num > lar:
+        lar = num
+    elif sma is None:
+        sma = num
+    elif num < sma:
+        sma = num
+    
+print('Maximum is', lar)
+print('Minimum is', sma)
