@@ -1,0 +1,18 @@
+file_name = 'mbox-short.txt'  # Update with the correct file name
+
+hour_counts = {}  # Dictionary to store hour counts
+
+# Open and read the file
+with open(file_name, 'r') as file:
+    for line in file:
+        if line.startswith('From '):
+            words = line.split()
+            time = words[5].split(':')
+            hour = time[0]
+            hour_counts[hour] = hour_counts.get(hour, 0) + 1
+
+# Sort and print the hour counts
+sorted_hours = sorted(hour_counts.items())
+
+for hour, count in sorted_hours:
+    print(hour, count)
