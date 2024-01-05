@@ -1,1 +1,28 @@
 
+file_name = 'mbox-short.txt'
+
+# Create an empty dictionary to store email addresses and their counts
+senders = {}
+
+# Read through the file and parse 'From ' lines to find the sender's email address
+with open(file_name, 'r') as file:
+    for line in file:
+        if line.startswith('From '):
+            words = line.split()
+            sender = words[1]
+            senders[sender] = senders.get(sender, 0) + 1
+
+# Find the most prolific sender using a maximum loop
+most_prolific_sender = None
+max_count = 0
+
+for sender, count in senders.items():
+    if count > max_count:
+        most_prolific_sender = sender
+        max_count = count
+
+# Print the most prolific sender and their count
+if most_prolific_sender is not None:
+    print(most_prolific_sender, max_count)
+else:
+    print("No 'From ' lines found in the file.")
